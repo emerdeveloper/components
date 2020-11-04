@@ -37,9 +37,10 @@ class HomePageTemp extends StatelessWidget {
         children: [
           ListTile(
             title: Text(title),
-            subtitle: Text("Esto es un d"),
+            subtitle: Text('Esto es un $title'),
             leading: Icon(Icons.account_circle_rounded),
             trailing: Icon(Icons.keyboard_arrow_right),
+            onTap: () { },
           ),
           Divider(color: colorDivider)
         ]
