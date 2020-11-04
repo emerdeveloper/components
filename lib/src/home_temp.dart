@@ -11,9 +11,7 @@ class HomePageTemp extends StatelessWidget {
       appBar: AppBar(
         title: Text("Componentes"),
       ),
-      body: ListView(
-        children: _createListTitleWithMap()
-      )
+      body: _list()
     );
   }
 
@@ -33,12 +31,6 @@ class HomePageTemp extends StatelessWidget {
   }
 
   List<Widget> _createListTitleWithMap() {
-    print(menuProvider.options);
-    
-    menuProvider.readFile().then((value) {
-      print (value);
-    });
-
     var colorDivider = Color(0xFF717D7E);
     return titles.map((title) {
       return Column(
@@ -54,6 +46,42 @@ class HomePageTemp extends StatelessWidget {
         ]
       );
     }).toList();
+  }
+
+  Widget _list() {
+
+    return FutureBuilder(
+      future: menuProvider.readFile(),
+      initialData: [],
+      builder: (BuildContext context, AsyncSnapshot<List<dynamic>> asyncSnapshot) {
+          return ListView(
+            children: _createListTitleFromFileData(asyncSnapshot.data),
+          );
+      }
+    );
+  }
+
+
+  List<Widget> _createListTitleFromFileData(List<dynamic> data) {
+      menuProvider.readFile().then((value) {
+        print (value);
+      });
+      
+      var colorDivider = Color(0xFF717D7E);
+
+      return data.map((path) {
+          return Column(
+            children: [
+              ListTile(
+                title: Text(path['texto']),
+                leading: Icon(Icons.account_circle_rounded),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                onTap: () { },
+              ),
+              Divider(color: colorDivider)
+            ]
+          );
+      }).toList();
   }
 
 }
