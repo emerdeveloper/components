@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:components/providers/menu_provider.dart';
+
 class HomePageTemp extends StatelessWidget {
   final titles = ["A", "B", "C", "D", "E", "F", "G", "H", "I"];
 
@@ -31,6 +33,8 @@ class HomePageTemp extends StatelessWidget {
   }
 
   List<Widget> _createListTitleWithMap() {
+    print(menuProvider.options);
+
     var colorDivider = Color(0xFF717D7E);
     return titles.map((title) {
       return Column(
