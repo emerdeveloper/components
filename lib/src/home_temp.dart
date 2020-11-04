@@ -1,3 +1,4 @@
+import 'package:components/Utilities/Icon_utilities.dart';
 import 'package:flutter/material.dart';
 
 import 'package:components/providers/menu_provider.dart';
@@ -66,7 +67,7 @@ class HomePageTemp extends StatelessWidget {
       menuProvider.readFile().then((value) {
         print (value);
       });
-      
+
       var colorDivider = Color(0xFF717D7E);
 
       return data.map((path) {
@@ -74,7 +75,7 @@ class HomePageTemp extends StatelessWidget {
             children: [
               ListTile(
                 title: Text(path['texto']),
-                leading: Icon(Icons.account_circle_rounded),
+                leading: getIcon(path['icon']),
                 trailing: Icon(Icons.keyboard_arrow_right),
                 onTap: () { },
               ),
