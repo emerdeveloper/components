@@ -10,7 +10,7 @@ class HomePageTemp extends StatelessWidget {
         title: Text("Componentes"),
       ),
       body: ListView(
-        children: _createListTitle()
+        children: _createListTitleWithMap()
       )
     );
   }
@@ -28,6 +28,23 @@ class HomePageTemp extends StatelessWidget {
     }
 
     return listTitle;
+  }
+
+  List<Widget> _createListTitleWithMap() {
+    var colorDivider = Color(0xFF717D7E);
+    return titles.map((title) {
+      return Column(
+        children: [
+          ListTile(
+            title: Text(title),
+            subtitle: Text("Esto es un d"),
+            leading: Icon(Icons.account_circle_rounded),
+            trailing: Icon(Icons.keyboard_arrow_right),
+          ),
+          Divider(color: colorDivider)
+        ]
+      );
+    }).toList();
   }
 
 }
