@@ -34,6 +34,10 @@ class HomePageTemp extends StatelessWidget {
 
   List<Widget> _createListTitleWithMap() {
     print(menuProvider.options);
+    
+    menuProvider.readFile().then((value) {
+      print (value);
+    });
 
     var colorDivider = Color(0xFF717D7E);
     return titles.map((title) {
