@@ -1,4 +1,5 @@
 import 'package:components/Utilities/Icon_utilities.dart';
+import 'package:components/src/alert_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:components/providers/menu_provider.dart';
@@ -56,14 +57,14 @@ class HomePageTemp extends StatelessWidget {
       initialData: [],
       builder: (BuildContext context, AsyncSnapshot<List<dynamic>> asyncSnapshot) {
           return ListView(
-            children: _createListTitleFromFileData(asyncSnapshot.data),
+            children: _createListTitleFromFileData(asyncSnapshot.data, context),
           );
       }
     );
   }
 
 
-  List<Widget> _createListTitleFromFileData(List<dynamic> data) {
+  List<Widget> _createListTitleFromFileData(List<dynamic> data, BuildContext context) {
       menuProvider.readFile().then((value) {
         print (value);
       });
@@ -77,12 +78,24 @@ class HomePageTemp extends StatelessWidget {
                 title: Text(path['texto']),
                 leading: getIcon(path['icon']),
                 trailing: Icon(Icons.keyboard_arrow_right),
-                onTap: () { },
+                onTap: () {
+                  _navigationWithPushName(context, path['ruta']);
+                },
               ),
               Divider(color: colorDivider)
             ]
           );
       }).toList();
+  }
+
+  _navigation(BuildContext context) {
+    Navigator.push(context, 
+    MaterialPageRoute(builder: 
+    (context) => AlertPage()));
+  }
+
+  _navigationWithPushName(BuildContext context, String pageName) {
+    Navigator.pushNamed(context, pageName);
   }
 
 }
