@@ -10,16 +10,21 @@ class CardPage extends StatelessWidget {
         title: Text('Cards'),
       ),
       body: ListView(
-        padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+        padding: EdgeInsets.symmetric(vertical: 25.0, horizontal: 25.0),
         children: <Widget>[
-          _cardSimple()
+          _cardSimple(),
+          _cardWithImage(),
+          _createCustomCard()
         ],
       ),
     );
   }
 
   Widget _cardSimple() {
-    return Card(child: Column(
+    return Card(
+      elevation: 5.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+      child: Column(
       children: <Widget>[
         ListTile(
           title: Text('Card simple'),
@@ -48,4 +53,63 @@ Snoop Dogg, you a bad motherfucker'''),
       ],
     ));
   }
+
+  Widget _cardWithImage() {
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      elevation: 5.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+      child: Column(
+      children: <Widget>[
+          FadeInImage(
+            placeholder: AssetImage('assets/jar-loading.gif'), 
+            image: NetworkImage('https://c4.wallpaperflare.com/wallpaper/109/220/12/dragon-ball-dragon-ball-super-ultra-instinct-son-goku-wallpaper-preview.jpg'),
+            fadeInDuration: Duration(milliseconds: 200),
+            height: 300.0,
+            fit: BoxFit.cover,
+            ),
+            Container(
+              child: Text('Super Kame Hame Ha'),
+              padding: EdgeInsets.all(10.0))
+          //Image(image: NetworkImage('https://c4.wallpaperflare.com/wallpaper/109/220/12/dragon-ball-dragon-ball-super-ultra-instinct-son-goku-wallpaper-preview.jpg'))
+      ]
+    ));
+  }
+
+  Widget _createCustomCard() {
+    var card = Container( child: Column(
+      children: <Widget>[
+        FadeInImage(
+          placeholder: AssetImage('assets/jar-loading.gif'), 
+          image: NetworkImage('https://www.pixel4k.com/wp-content/uploads/2018/11/4k-anime-dragon-ball-super_1541974079.jpg'),
+          fadeInDuration: Duration(milliseconds: 200),
+          height: 300.0,
+          fit: BoxFit.cover,
+          ),
+          Container(
+            child: Text('Vegeta'),
+            padding: EdgeInsets.all(10.0)
+          )
+      ]
+    ));
+  
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(15.0),
+      color: Colors.white,
+      boxShadow: <BoxShadow>[
+        BoxShadow(
+          color: Colors.black26,
+          blurRadius: 10.0,
+          spreadRadius: 2.0,
+          offset: Offset(2.0, 10.0))
+      ]
+    ),
+    child: ClipRRect(//Cut content
+      child: card,
+      borderRadius: BorderRadius.circular(15.0),
+      )
+  );
+  }
+  
 }
