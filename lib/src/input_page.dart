@@ -10,7 +10,9 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
 
   TextEditingController editingController = TextEditingController();
-  String text = '';
+  String text   = '';
+  String selectedOption;
+  List<String> techniqueList =  ['Kaioken', 'Kame Hame Ha', 'Genkidama', 'Teletransportacion', 'Golpe del dragon', 'Taioken', 'Kienzan'];
 
 
   @override
@@ -28,8 +30,12 @@ class _InputPageState extends State<InputPage> {
           Divider(),
           _createPasswordField(),
           Divider(),
-          _createDateField()
-        ],
+          _createDateField(),
+          Divider(),
+          _createDropdown(),
+          Divider(),
+          buildDropdownButton()
+        ]
       ),
     );
   }
@@ -112,5 +118,64 @@ class _InputPageState extends State<InputPage> {
           editingController.text = datePicked.toString();
         });
       }
+  }
+
+  List<DropdownMenuItem<String>> getOptions() {
+    return techniqueList.map((String value) {
+      return DropdownMenuItem<String>(
+        value: value,
+        child: Text(value),
+      );
+    }).toList();
+
+  } 
+
+  Widget _createDropdown() {
+    return Row(
+      children: [
+        Icon(Icons.list),
+        SizedBox(width: 15.0),
+        DropdownButton(
+          
+          hint: Text('Seleccionar'),
+          value: selectedOption,
+          items: getOptions(), 
+          onChanged: (optionSelected) {
+            setState(() {
+              selectedOption = optionSelected;
+            });
+          }
+          ),
+      ],
+    );
+  }
+
+  Widget buildDropdownButton() {
+  return Container(
+  padding: EdgeInsets.symmetric(horizontal: 20),
+  child: FormField<String>(
+    builder: (FormFieldState<String> state) {
+      return InputDecorator(
+        decoration: InputDecoration(
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(5.0))),
+        child: DropdownButtonHideUnderline(
+          child: DropdownButton<String>(
+            hint: Text("Select Device"),
+            value: selectedOption,
+            isDense: true,
+            onChanged: (newValue) {
+              setState(() {
+                selectedOption = newValue;
+              });
+              print(newValue);
+            },
+            items: getOptions()
+          ),
+        ),
+      );
+    },
+  ),
+);
   }
 }
