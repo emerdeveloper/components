@@ -10,7 +10,7 @@ class CardPage extends StatelessWidget {
         title: Text('Cards'),
       ),
       body: ListView(
-        padding: EdgeInsets.symmetric(vertical: 25.0, horizontal: 25.0),
+        padding: EdgeInsets.symmetric(vertical: 25.0, horizontal: 15.0),
         children: <Widget>[
           _cardSimple(),
           _cardWithImage(),
