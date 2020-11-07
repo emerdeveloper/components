@@ -20,6 +20,11 @@
             "ruta" : "animateContainer",
             "icon" : "animation",
             "texto": "Contenedot animado"
+        },
+        {
+            "ruta" : "input",
+            "icon" : "edit",
+            "texto": "Campos de texto"
         }
     ]
 }
