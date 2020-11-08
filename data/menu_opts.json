@@ -25,6 +25,11 @@
             "ruta" : "input",
             "icon" : "edit",
             "texto": "Campos de texto"
+        },
+        {
+            "ruta" : "slider",
+            "icon" : "tune",
+            "texto": "Sliders"
         }
     ]
 }
