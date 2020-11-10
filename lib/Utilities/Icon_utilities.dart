@@ -8,6 +8,7 @@ final _icons = <String, IconData> {
   'animation'     : Icons.animation,
   'edit'          : Icons.edit,
   'tune'          : Icons.tune,
+  'list_rounded'          : Icons.list_rounded,
 };
 
 Icon getIcon(String inconName) {
