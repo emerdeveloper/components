@@ -1,16 +1,25 @@
 # components
 
-A new Flutter project.
+A Flutter APP that use different Widgets to understand how they work
 
-## Getting Started
+Applying the concepts:
 
-This project is a starting point for a Flutter application.
+* Listviews
+* Pull to refresh
+* InfiniteScroll
+* Loadings
+* Assets
+* Future Builder
+* Routes
+* and more...
 
-A few resources to get you started if this is your first Flutter project:
+# Functionality
+An APP Android/iOS which consists in how work the commons Widgets, such as: AlertDialog, FadeInImage, Routes and Navigator.pushNamed, Cards, Sliders, CheckboxListTile, SwitchListTile, InputDecoration, DropdownButton, etc.
+There are diferents pages or screens that put into practice
+the above widgets with examples.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Screenshots
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+|  Welcome      |  ListView.builder      |  Cards      |  Slider      |
+|------------|-------------|------------|------------|
+| ![Portrait](documentation/home.png) |  ![Portrait](documentation/list-builder.png)  | ![Portrait](documentation/cards.png) | ![Portrait](documentation/slider.png) |
